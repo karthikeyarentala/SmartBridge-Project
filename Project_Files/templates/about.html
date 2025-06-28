@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NutriGaze - About Us</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #222;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0d232a;
+            padding: 18px 40px 12px 32px;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s;
+        }
+
+        .nav-links li a.active,
+        .nav-links li a:hover {
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .about-section {
+            max-width: 1100px;
+            margin: 48px auto 0 auto;
+            padding: 40px 30px 0 30px;
+            background: #fff;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .about-badge {
+            display: inline-block;
+            background: #f8e6ee;
+            color: #e74c3c;
+            font-size: 0.95rem;
+            padding: 5px 18px;
+            border-radius: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .about-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 6px 0 8px 0;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .about-desc {
+            color: #222;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .about-left, .about-right {
+            flex: 1 1 350px;
+            min-width: 320px;
+            max-width: 470px;
+        }
+
+        .about-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.05rem;
+            color: #222;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .tick {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .about-right p {
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+            color: #222;
+        }
+
+        .about-btn {
+            display: inline-block;
+            padding: 8px 26px;
+            border: 1.6px solid #e74c3c;
+            color: #e74c3c;
+            border-radius: 22px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            background: #fff;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .about-btn:hover {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .about-content {
+                flex-direction: column;
+                gap: 28px;
+            }
+            .about-section {
+                padding: 40px 10px 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">NUTRIGAZE</div>
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="#" class="active">About</a></li>
+            <li><a href="{{url_for('predict')}}">Predict</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-header">
+            <span class="about-badge">ABOUT</span>
+            <h2>Learn More <span class="highlight">About Us</span></h2>
+            <p class="about-desc">
+                NutriGaze is a pioneering organization dedicated to enhancing the quality and<br>
+                safety of your fruits and vegetables.
+            </p>
+        </div>
+        <div class="about-content">
+            <div class="about-left">
+                <ul class="about-list">
+                    <li>
+                        <span class="tick">&#10003;</span>
+                        Comprehensive analysis and grading of fruits and vegetables based on ripeness and nutritional content.
+                    </li>
+                    <li>
+                        <span class="tick">&#10003;</span>
+                        Continuous monitoring of produce freshness from farm to table.
+                    </li>
+                    <li>
+                        <span class="tick">&#10003;</span>
+                        Innovative solutions to minimize food waste by identifying and separating rotten produce early in the supply chain.
+                    </li>
+                </ul>
+            </div>
+            <div class="about-right">
+                <p>
+                    Our team is our greatest asset. We are a diverse group of experts in fields such as agricultural science, data analytics, software engineering, and food technology. Together, we bring a wealth of knowledge and experience to tackle the challenges of food quality and safety.
+                </p>
+                <a href="#" class="about-btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

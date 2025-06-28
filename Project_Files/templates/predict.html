@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriGaze - Image Classification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0d232a;
+            padding: 18px 40px 12px 32px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: normal;
+            font-size: 28px;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
+        .upload-label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .file-input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            background-color: #f0f0f0;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .file-name {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Predict Button */
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .predict-button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: lowercase;
+        }
+
+        .predict-button:hover {
+            background-color: #219653;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .upload-section {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px;
+            }
+            
+            .file-input-container {
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">NUTRIGAZE</div>
+            <div class="nav-links">
+                <a href="{{url_for('home')}}">Home</a>
+                <a href="{{url_for('about')}}">About</a>
+                <a href="#" class="active">Predict</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Image Classification</h1>
+            <div class="upload-section">
+                <div class="upload-label">Upload Your Image :</div>
+
+                <form method="POST" enctype="multipart/form-data" action="{{url_for('predict')}}">
+                    <input type="file" name="image" id="file-upload" class="file-input" accept="image/*">
+                    <label for="file-upload" class="file-label">Choose File</label>
+                    <input type="submit" class="predict-button" value="Predict">
+                </form>
+                <span class="file-name">No file chosen</span>
+
+            </div>
+        </div>
+        <center>
+            {% if prediction %}
+                <h2>{{ prediction }}</h2>
+                <img src="{{ image }}" width="300" style="margin-top: 20px;">
+            {% endif %}
+        </center>
+    </main>
+
+    <script>
+        // Simple script to update the file name display
+        document.getElementById('file-upload').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.querySelector('.file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
